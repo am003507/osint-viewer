@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@craco/craco": "^5.6.4",
+    "@emotion/core": "^10.0.35",
     "@fortawesome/fontawesome-svg-core": "^1.2.30",
     "@fortawesome/free-brands-svg-icons": "^5.14.0",
     "@fortawesome/free-regular-svg-icons": "^5.14.0",
@@ -19,12 +20,15 @@
     "@types/node": "^12.12.54",
     "@types/react": "^16.9.46",
     "@types/react-dom": "^16.9.8",
+    "@types/react-router-dom": "^5.1.5",
     "craco-alias": "^2.1.1",
+    "emotion": "^10.0.27",
     "eslint": "^6.6.0",
     "eslint-config-airbnb": "^18.2.0",
     "gh-pages": "^3.1.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
     "typescript": "^3.7.5"
   },

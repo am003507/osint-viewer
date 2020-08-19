@@ -1,18 +1,16 @@
 import * as React from 'react';
-
 import {
-  AppBar,
-  Toolbar,
-  Typography,
+  Drawer,
   makeStyles,
-  InputBase,
-  Container,
   fade,
+  Divider,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
 } from '@material-ui/core';
-import { BrowserRouter } from 'react-router-dom';
-import SearchIcon from '@material-ui/icons/Search';
-import Drawers from './components/molecules/Drawers';
-import Routers from './components/molecules/Routers';
+import { Link } from 'react-router-dom';
+import InboxIcon from '@material-ui/icons/MoveToInbox';
 
 const drawerWidth = 240;
 
@@ -89,46 +87,56 @@ const useStyles = makeStyles((theme) => ({
       width: '20ch',
     },
   },
-  wrapper: {
-    padding: 50,
-  },
 }));
-const App: React.FC = () => {
+
+const Drawers: React.FC = () => {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-      <BrowserRouter>
-        <AppBar position="fixed" color="primary" className={classes.appBar}>
-          <Toolbar>
-            <Typography variant="h6" noWrap>
-              OSINT
-            </Typography>
-            <div className={classes.search}>
-              <div className={classes.searchIcon}>
-                <SearchIcon />
-              </div>
-              <InputBase
-                placeholder="Search…"
-                classes={{
-                  root: classes.inputRoot,
-                  input: classes.inputInput,
-                }}
-                inputProps={{ 'aria-label': 'search' }}
-              />
-            </div>
-          </Toolbar>
-        </AppBar>
-        <Drawers />
-        <Container maxWidth="xl">
-          <div className={classes.toolbar} />
-          <div className={classes.wrapper}>
-            <Routers />
+    <div>
+      <Drawer
+        className={classes.drawer}
+        variant="permanent"
+        anchor="left"
+        classes={{
+          paper: classes.drawerPaper,
+        }}
+      >
+        <div className={classes.toolbar}>
+          <div className={classes.titleWrapper}>
+            <span className={classes.title}> OSINT</span>
           </div>
-        </Container>
-      </BrowserRouter>
+        </div>
+        <Divider />
+        <List>
+          <Link to="/" className={classes.link}>
+            <ListItem button key="DASHBOARD">
+              <ListItemIcon>
+                <InboxIcon />
+              </ListItemIcon>
+              <ListItemText primary="DASHBOARD" />
+            </ListItem>
+          </Link>
+          <Link to="/ioc/list" className={classes.link}>
+            <ListItem button key="ioc">
+              <ListItemIcon>
+                <InboxIcon />
+              </ListItemIcon>
+              <ListItemText primary="IOC" />
+            </ListItem>
+          </Link>
+          <Link to="/report/list" className={classes.link}>
+            <ListItem button key="report">
+              <ListItemIcon>
+                <InboxIcon />
+              </ListItemIcon>
+              <ListItemText primary="REPORT" />
+            </ListItem>
+          </Link>
+        </List>
+      </Drawer>
     </div>
   );
 };
 
-export default App;
+export default Drawers;
